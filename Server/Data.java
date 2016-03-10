@@ -14,9 +14,6 @@ public class Data {
 		this.lUV = new ArrayList<UV>();
 		this.lSession = new ArrayList<Session>();
 		this.lStage = new ArrayList<Stage>();
-	}
-
-	public static void main(String[] args) {
 		
 		// Nouveaux UVs TRANSVERSE
 		UV trans1 = new UV(11, "Equipier prompt secours");
