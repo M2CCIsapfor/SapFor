@@ -21,16 +21,7 @@ public class LoginManager {
 	public String simple(){
 		return "Hello Vicky";
 	}
-	private List<Login> loginTEST;
-	public LoginManager(){
-		loginTEST = new ArrayList<Login>();
-		loginTEST.add(new Login("Julien", "ju"));
-		loginTEST.add(new Login("Vicky", "vi"));
-		loginTEST.add(new Login("Mamadou", "ma"));
-		loginTEST.add(new Login("Sebastien", "se"));
-		loginTEST.add(new Login("Mouktar", "mo"));
-		System.out.println(loginTEST);
-	}
+	Data donnees=new Data();
 	
 	//V�rification du login et du mot de passe
 	@GET
