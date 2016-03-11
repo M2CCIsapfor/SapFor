@@ -35,14 +35,14 @@ public class LoginManager {
 	//V�rification du login et du mot de passe
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public synchronized Login getProduitByUID(@QueryParam("login") String log, @QueryParam("password") String pass) {
+	public synchronized String Connexion(@QueryParam("login") String log, @QueryParam("password") String pass) {
 	System.out.println(log +" :"+ pass);
 	// DEBUG
-	for (Login p : loginTEST) {
-		System.out.println((p.getLogin().equals(log) & p.getPassword().equals(pass)));
-		if (p.getLogin().equals(log)&& p.getPassword().equals(pass)){ System.out.println("t2"); return p;}
+	for (Agent p : donnees.lAgent ) {
+		System.out.println((p.getMatricule().equals(log) & p.getPassword().equals(pass)));
+		if (p.getMatricule().equals(log) & p.getPassword().equals(pass)){ return p.getCleHashage();}
 	}
-	return null;                              // Aucun produit correspondant � l'uid
+	return "Mot de passe ou login invalide";                              // Aucun produit correspondant à l'uid
 	}
 	
 	
