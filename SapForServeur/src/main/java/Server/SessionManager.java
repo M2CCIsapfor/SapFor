@@ -1,4 +1,4 @@
-package sapfor.test;
+package server;
 import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -22,17 +22,17 @@ public class SessionManager {
 	
 	@GET
 	@Path("/sessions")
-	public List<client.Session> SessionAccessibles(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
-		List<client.Session> sess=new ArrayList<client.Session>();
+	public List<Client.Session> SessionAccessibles(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
+		List<Client.Session> sess=new ArrayList<Client.Session>();
 		Agent agent=rechercheAgent(cle,donnees.lAgent);
 		
 		//Liste des sessions accessibles en tant qu'apprenant
 		if (rol.equals("apprenant")){
 		for(Session s:donnees.lSession){
 			if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getUv())!=true){
-				client.Session nouvelle=new client.Session();
+				Client.Session nouvelle=new Client.Session();
 				nouvelle.setLieu(s.getLieu());
-				nouvelle.setUv(new client.UV(s.getUv().getId(),s.getUv().getNom()));
+				nouvelle.setUv(new Client.UV(s.getUv().getId(),s.getUv().getNom()));
 				nouvelle.setDate(s.getDates());
 				sess.add(nouvelle);}
 			}
@@ -42,9 +42,9 @@ public class SessionManager {
 		else if (rol.equals("formateur")){
 			for(Session s:donnees.lSession){
 				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getUv())==true){
-					client.Session nouvelle=new client.Session();
+					Client.Session nouvelle=new Client.Session();
 					nouvelle.setLieu(s.getLieu());
-					nouvelle.setUv(new client.UV(s.getUv().getId(),s.getUv().getNom()));
+					nouvelle.setUv(new Client.UV(s.getUv().getId(),s.getUv().getNom()));
 					nouvelle.setDate(s.getDates());
 					sess.add(nouvelle);}
 				}
@@ -53,7 +53,7 @@ public class SessionManager {
 		else {return null;}
 	}
 	
-	//Recherche d'un Agent dans une liste d'Agent à partir d'une clef de hashage
+	//Recherche d'un Agent dans une liste d'Agent Ã  partir d'une clef de hashage
 	public Agent rechercheAgent(String cle, List<Agent> listeAgent){
 		for(Agent a:listeAgent){
 			if(a.getCleHashage().equals(cle)==true){
@@ -63,7 +63,7 @@ public class SessionManager {
 		return null;
 	}
 	
-	//Rend true si tous les UV requis pour une sessions sont validés par l'agent
+	//Rend true si tous les UV requis pour une sessions sont validÃ©s par l'agent
 	public boolean rechercheUVrequis(Agent agent, Session session){
 		boolean requisAcquis=true;
 		for(UV uvprerequis:session.getUv().getListeUV()){
