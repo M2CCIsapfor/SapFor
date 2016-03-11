@@ -1,4 +1,4 @@
-
+package Server;
 
 import java.util.*;
 
@@ -40,6 +40,10 @@ public class Agent {
 	
 	public void setId(String matricule) {
 		this.matricule = matricule;
+	}
+	
+	public String getPassword() {
+		return password;
 	}
 	
 	public String getNom() {

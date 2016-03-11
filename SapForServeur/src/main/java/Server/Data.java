@@ -1,3 +1,5 @@
+package Server;
+
 import java.util.*;
 
 public class Data {
@@ -23,7 +25,7 @@ public class Data {
 		trans3.addUV(trans1); trans3.addUV(trans2);
 		UV trans4 = new UV(14, "Organisation et missions du SDIS");
 		trans4.addUV(trans1); trans4.addUV(trans2); trans4.addUV(trans3);
-				
+		
 		// Nouveaux UVs SECOURS A PERSONNES
 		UV sap1 = new UV(21, "Equipier au VSAV niv.1");
 		UV sap2 = new UV(22, "Equipier au VSAV niv.2");	
@@ -52,11 +54,6 @@ public class Data {
 		UV inter2 = new UV(52, "Interventions animalières");	
 		inter2.addUV(inter1);		
 		
-		lUV.add(trans1); lUV.add(trans2); lUV.add(trans3); lUV.add(trans4);
-		lUV.add(sap1); lUV.add(sap2); lUV.add(sap3);
-		lUV.add(sr1); lUV.add(sr2); lUV.add(sr3);
-		lUV.add(inc1); lUV.add(inc2); lUV.add(inc3); lUV.add(inc4);
-		lUV.add(inter1); lUV.add(inter2);
 		
 		// Nouveaux Agents
 		Agent mamadou = new Agent("111", "ma");
@@ -92,8 +89,6 @@ public class Data {
 		noel.addUV(trans1); noel.addUV(trans2); noel.addUV(trans3); noel.addUV(sap1); noel.addUV(sap2);
 		noel.addUV(sr1); noel.addUV(sr2); noel.addUV(inc1); noel.addUV(inc1); noel.addUV(inc2); noel.addUV(inter1);
 		
-		lAgent.add(mamadou); lAgent.add(mouctar); lAgent.add(vicky); lAgent.add(ibrahima); lAgent.add(abdourahman);
-		lAgent.add(yannick); lAgent.add(francois); lAgent.add(sebastien); lAgent.add(christophe); lAgent.add(julien); lAgent.add(noel);
 		
 		//nouvelles Sessions et nouveaux Stages
 		Session transA = new Session(trans1, "Montpellier", "11-07-2016");
@@ -117,12 +112,6 @@ public class Data {
 		Session sapC = new Session(sap2, "Strasbourg", "03-05-2016");
 		Stage intermediaire = new Stage(3, "123");
 		intermediaire.addSession(incC); intermediaire.addSession(srC); intermediaire.addSession(sapC);
-		
-		lSession.add(transA); lSession.add(incA); lSession.add(srA); lSession.add(sapA);
-		lSession.add(transB); lSession.add(incB); lSession.add(srB); lSession.add(sapB);
-		lSession.add(incC); lSession.add(srC); lSession.add(sapC); lSession.add(interA); lSession.add(interB);
-		
-		lStage.add(debutants); lStage.add(experts); lStage.add(intermediaire);
 		
 	}
 	
