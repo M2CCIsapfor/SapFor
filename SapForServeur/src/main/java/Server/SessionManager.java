@@ -1,4 +1,4 @@
-package server;
+package Server;
 import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
