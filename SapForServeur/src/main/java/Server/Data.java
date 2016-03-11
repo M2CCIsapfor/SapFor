@@ -58,37 +58,47 @@ public class Data {
 		// Nouveaux Agents
 		Agent mamadou = new Agent("111", "ma");
 		mamadou.addUV(inter1); mamadou.addUV(inc1); mamadou.addUV(sr1); mamadou.addUV(sap1); mamadou.addUV(trans1);
+		mamadou.setCleHashage("aaa");
 		
 		Agent mouctar = new Agent("222", "mo");
 		mouctar.addUV(inc1); mouctar.addUV(inc2); mouctar.addUV(inc3); mouctar.addUV(sap1);
+		mouctar.setCleHashage("bbb");
 		
 		Agent vicky = new Agent("333", "vi");
 		vicky.addUV(sr1); vicky.addUV(sr2); vicky.addUV(inter1); vicky.addUV(inter2); vicky.addUV(inc1);
+		vicky.setCleHashage("ccc");
 		
 		Agent sebastien = new Agent("444", "se");
 		sebastien.addUV(inc1); sebastien.addUV(inc2); sebastien.addUV(sr1); sebastien.addUV(sr2);
+		sebastien.setCleHashage("ddd");
 		
 		Agent christophe = new Agent("555", "ch");
 		christophe.addUV(trans1); christophe.addUV(trans2); christophe.addUV(trans3); christophe.addUV(inter1);
+		christophe.setCleHashage("eee");
 		
 		Agent julien = new Agent("666", "ju");
+		julien.setCleHashage("fff");
 		
 		Agent ibrahima = new Agent("777", "ib");
 		ibrahima.addUV(inc1); ibrahima.addUV(inc2); ibrahima.addUV(trans1); ibrahima.addUV(trans2);
+		ibrahima.setCleHashage("ggg");
 		
 		Agent abdourahman = new Agent("888", "ab");
 		abdourahman.addUV(inter1); abdourahman.addUV(inter2); abdourahman.addUV(inc1); abdourahman.addUV(sr1);
+		abdourahman.setCleHashage("hhh");
 		
 		Agent yannick = new Agent("999", "ya");
 		yannick.addUV(trans1); yannick.addUV(trans2); yannick.addUV(trans3); yannick.addUV(inter1);
+		yannick.setCleHashage("iii");
 		
 		Agent francois = new Agent("321", "fr");
 		francois.addUV(inter1); francois.addUV(inter2); francois.addUV(inc1); francois.addUV(inc2);
+		francois.setCleHashage("jjj");
 		
 		Agent noel = new Agent("123", "no");
 		noel.addUV(trans1); noel.addUV(trans2); noel.addUV(trans3); noel.addUV(sap1); noel.addUV(sap2);
 		noel.addUV(sr1); noel.addUV(sr2); noel.addUV(inc1); noel.addUV(inc1); noel.addUV(inc2); noel.addUV(inter1);
-		
+		noel.setCleHashage("kkk");
 		
 		//nouvelles Sessions et nouveaux Stages
 		Session transA = new Session(trans1, "Montpellier", "11-07-2016");
