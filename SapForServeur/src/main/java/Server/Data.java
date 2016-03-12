@@ -101,25 +101,25 @@ public class Data {
 		noel.setCleHashage("kkk");
 		
 		//nouvelles Sessions et nouveaux Stages
-		Session transA = new Session(trans1, "Montpellier", "11-07-2016");
-		Session incA = new Session(inc1, "Montpellier", "17-07-2016");
-		Session srA = new Session(sr1, "Montpellier", "13-07-2016");
-		Session sapA = new Session(sap1, "Montpellier", "12-07-2016");
-		Session interA = new Session(inter1, "Montpellier", "18-07-2016");
+		Session transA = new Session(001, trans1, "Montpellier", "11-07-2016");
+		Session incA = new Session(002, inc1, "Montpellier", "17-07-2016");
+		Session srA = new Session(003, sr1, "Montpellier", "13-07-2016");
+		Session sapA = new Session(004, sap1, "Montpellier", "12-07-2016");
+		Session interA = new Session(005, inter1, "Montpellier", "18-07-2016");
 		Stage debutants = new Stage(1, "111");
 		debutants.addSession(interA); debutants.addSession(sapA); debutants.addSession(srA); debutants.addSession(incA); debutants.addSession(transA);
 		
-		Session transB = new Session(trans4, "Brest", "22-06-2016");
-		Session incB = new Session(inc4, "Brest", "24-06-2016");
-		Session srB = new Session(sr3, "Brest", "28-06-2016");
-		Session sapB = new Session(sap3, "Brest", "25-06-2016");
-		Session interB = new Session(inter2, "Brest", "18-06-2016");
+		Session transB = new Session(006, trans4, "Brest", "22-06-2016");
+		Session incB = new Session(007, inc4, "Brest", "24-06-2016");
+		Session srB = new Session(010, sr3, "Brest", "28-06-2016");
+		Session sapB = new Session(011, sap3, "Brest", "25-06-2016");
+		Session interB = new Session(012, inter2, "Brest", "18-06-2016");
 		Stage experts = new Stage(2, "555");
 		experts.addSession(interB); experts.addSession(sapB); experts.addSession(srB); experts.addSession(incB); experts.addSession(transB);
 		
-		Session incC = new Session(inc3, "Strasbourg", "02-05-2016");
-		Session srC = new Session(sr1, "Strasbourg", "05-05-2016");
-		Session sapC = new Session(sap2, "Strasbourg", "03-05-2016");
+		Session incC = new Session(013, inc3, "Strasbourg", "02-05-2016");
+		Session srC = new Session(014, sr1, "Strasbourg", "05-05-2016");
+		Session sapC = new Session(015, sap2, "Strasbourg", "03-05-2016");
 		Stage intermediaire = new Stage(3, "123");
 		intermediaire.addSession(incC); intermediaire.addSession(srC); intermediaire.addSession(sapC);
 		
