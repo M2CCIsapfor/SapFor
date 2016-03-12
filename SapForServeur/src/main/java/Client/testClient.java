@@ -39,7 +39,7 @@ public class testClient {
 		/**********************************
 		 test session accessible par l'apprenant
 		***********************************/
-		List<Session> listeSessionAccessibleCandidat=new ArrayList();
+		List<Session> listeSessionAccessibleCandidat=new ArrayList<Session>();
 		WebResource service2=client.resource(getBaseURI()+"/"+cle+"/sessions?role=apprenant");
 		listeSessionAccessibleCandidat=service2.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<Session>>(){});
 		System.err.println("Liste des sessions accessibles en tant qu'apprenant :");
@@ -49,7 +49,7 @@ public class testClient {
 		 test session accessible par le formateur
 		***********************************/
 		
-		List<Session> listeSessionAccessibleFormateur=new ArrayList();
+		List<Session> listeSessionAccessibleFormateur=new ArrayList<Session>();
 		WebResource service3=client.resource(getBaseURI()+"/"+cle+"/sessions?role=formateur");
 		listeSessionAccessibleFormateur=service3.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<Session>>(){});
 		System.err.println("Liste des sessions accessibles en tant que formateur :");
@@ -60,7 +60,7 @@ public class testClient {
 
 private static void afficher(String cle) {
 	
-		System.err.println("clé à rechercher :" +cle);
+		System.err.println("cl� � rechercher :" +cle);
 		
 		
 	
