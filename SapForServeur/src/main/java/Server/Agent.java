@@ -24,12 +24,17 @@ public class Agent {
 	public Agent(String matricule, String password){
 		this.matricule=matricule;
 		this.password=password;
+		this.nom = new String();
+		this.prenom = new String();
+		this.aptitude = new ArrayList<UV>(); 
 	}
 	
 	public Agent(String matricule, String password, List<UV> aptitude){
 		this.matricule=matricule;
 		this.password=password;
 		this.aptitude=aptitude;
+		this.nom = new String();
+		this.prenom = new String();
 	}
 	
 	//Accesseurs et Modifieurs
