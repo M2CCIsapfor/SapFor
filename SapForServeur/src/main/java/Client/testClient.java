@@ -1,3 +1,4 @@
+package Client;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.GenericType;
@@ -59,7 +60,7 @@ public class testClient {
 
 private static void afficher(String cle) {
 	
-		System.err.println("clé à rechercher :" +cle);
+		System.err.println("clÃ© Ã  rechercher :" +cle);
 		
 		
 	
