@@ -17,6 +17,7 @@ public class Stage {
 	public Stage(int id, String directeur){
 		this.id=id;
 		this.matriculeDir=directeur;
+		this.listeSessions = new ArrayList<Session>();
 	}
 	
 	public Stage(int id, String directeur, List<Session> listeSessions){
