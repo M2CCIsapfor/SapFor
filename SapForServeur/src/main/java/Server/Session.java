@@ -266,5 +266,23 @@ public class Session {
 		formateurs.addAll(Formateurs);
 		candidatsFo.removeAll(Formateurs);
 	}
-	
+
+	/**
+	 * Fonction de retrait d'un agent dans une liste de Session par un Candidat
+	 * @param agent
+	 */
+	public void removeAgent(Agent agent) {
+		if(this.candidatsAp.contains(agent)) {
+			this.candidatsAp.remove(agent);
+		}
+		else if(this.candidatsFo.contains(agent)) {
+			this.candidatsFo.remove(agent);
+		}
+		else if(this.apprenants.contains(agent)) {
+			this.apprenants.remove(agent);
+		}
+		else if(this.formateurs.contains(agent)) {
+			this.formateurs.remove(agent);
+		}
+	}
 }
