@@ -19,7 +19,9 @@ public class UV {
 	public UV(int id, String nom){
 		this.id=id;
 		this.nom=nom;
+		this.prerequis=new ArrayList<UV>();
 	}
+
 	public UV(int id, String nom, List<UV> prerequis){
 		this.id=id;
 		this.nom=nom;
