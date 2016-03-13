@@ -18,7 +18,8 @@ public class Agent {
 		this.password=new String();
 		this.nom = new String();
 		this.prenom = new String();
-		this.aptitude = new ArrayList<UV>(); 
+		this.aptitude = new ArrayList<UV>();
+		this.cleHashage = new String();
 	}
 	
 	public Agent(String matricule, String password){
@@ -27,6 +28,7 @@ public class Agent {
 		this.nom = new String();
 		this.prenom = new String();
 		this.aptitude = new ArrayList<UV>(); 
+		this.cleHashage = new String();
 	}
 	
 	public Agent(String matricule, String password, List<UV> aptitude){
@@ -35,6 +37,7 @@ public class Agent {
 		this.aptitude=aptitude;
 		this.nom = new String();
 		this.prenom = new String();
+		this.cleHashage = new String();
 	}
 	
 	//Accesseurs et Modifieurs
