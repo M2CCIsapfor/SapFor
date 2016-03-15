@@ -120,21 +120,21 @@ public class ImpSerSession extends Client.ImpCliSession implements SerSession {
 	}
 	
 	/**
-	 * Valider un ou plusieurs candidats Apprenants (en temps que directeur)
+	 * Valider un  candidat Apprenant (en temps que directeur)
 	 * @param Apprenants
 	 */
-	public void validerApprenants(List<SerAgent> Apprenants) {
-		apprenants.addAll(Apprenants);
-		candidatsAp.removeAll(Apprenants);
+	public void validerApprenant(SerAgent Apprenant) {
+		apprenants.add(Apprenant);
+		candidatsAp.remove(Apprenant);
 	}
 	
 	/**
-	 * Valider un ou plusieurs candidats formateurs (en temps que directeur)
+	 * Valider un  candidat formateur (en temps que directeur)
 	 * @param Formateurs
 	 */
-	public void validerFormateurs(List<SerAgent> Formateurs) {
-		formateurs.addAll(Formateurs);
-		candidatsFo.removeAll(Formateurs);
+	public void validerFormateur(SerAgent Formateur) {
+		formateurs.add(Formateur);
+		candidatsFo.remove(Formateur);
 	}
 
 	/**

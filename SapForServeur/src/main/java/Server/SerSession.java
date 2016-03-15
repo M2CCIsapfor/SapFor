@@ -62,9 +62,9 @@ public interface SerSession {
 
 	void setFormateurs(List<SerAgent> formateurs);
 
-	public void validerApprenants(List<SerAgent> Apprenants);
+	public void validerApprenant(SerAgent Apprenants);
 	
-	public void validerFormateurs(List<SerAgent> Formateurs);
+	public void validerFormateur(SerAgent Formateurs);
 	
 	public void removeAgent(SerAgent agent);
 }
