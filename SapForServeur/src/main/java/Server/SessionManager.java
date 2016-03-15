@@ -7,6 +7,8 @@ import javax.ws.rs.core.MediaType;
 import com.sun.jersey.spi.resource.Singleton;
 
 import Client.CliSession;
+import Client.ImpCliSession;
+import Client.ImpCliUV;
 
 
 @Singleton
@@ -36,30 +38,30 @@ public class SessionManager {
 	 */
 	@GET
 	@Path("/sessions")
-	public List<Client.ImpCliSession> SessionAccessibles(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
-		List<Client.ImpCliSession> sess=new ArrayList<Client.ImpCliSession>();
-		Agent agent=rechercheAgent(cle,donnees.lAgent);
+	public List<CliSession> SessionAccessibles(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
+		List<CliSession> sess=new ArrayList<CliSession>();
+		SerAgent agent = rechercheAgent(cle, donnees.lAgent);
 
 		//Liste des sessions accessibles en tant qu'apprenant
 		if (rol.equals("apprenant")){
-			for(Session s:donnees.lSession){
-				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getUv())!=true){
-					Client.ImpCliSession nouvelle=new Client.ImpCliSession();
+			for(SerSession s:donnees.lSession){
+				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getSerUv())!=true){
+					CliSession nouvelle=new ImpCliSession(s.getId());
 					nouvelle.setLieu(s.getLieu());
-					nouvelle.setUv(new CliUV(s.getUv().getId(),s.getUv().getNom()));
-					nouvelle.setDate(s.getDates());
+					nouvelle.setCliUv(new ImpCliUV(s.getSerUv().getNumero(),s.getSerUv().getNom()));
+					nouvelle.setDate(s.getDate());
 					sess.add(nouvelle);}
 			}
 			return sess;
 		}
 		//Liste des sessions accessibles en tant que formateur
 		else if (rol.equals("formateur")){
-			for(Session s:donnees.lSession){
-				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getUv())==true){
-					Client.ImpCliSession nouvelle=new Client.ImpCliSession();
+			for(SerSession s:donnees.lSession){
+				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getSerUv())==true){
+					CliSession nouvelle=new ImpCliSession(s.getId());
 					nouvelle.setLieu(s.getLieu());
-					nouvelle.setUv(new CliUV(s.getUv().getId(),s.getUv().getNom()));
-					nouvelle.setDate(s.getDates());
+					nouvelle.setCliUv(new ImpCliUV(s.getSerUv().getNumero(),s.getSerUv().getNom()));
+					nouvelle.setDate(s.getDate());
 					sess.add(nouvelle);}
 			}
 			return sess;	
@@ -73,8 +75,8 @@ public class SessionManager {
 	 * @param listeAgent : Liste dans laquelle l'Agent est recherché
 	 * @return L'agent correspondant à la clé de hashage
 	 */
-	public Agent rechercheAgent(String cle, List<Agent> listeAgent){
-		for(Agent a:listeAgent){
+	public SerAgent rechercheAgent(String cle, List<SerAgent> listeAgent){
+		for(SerAgent a:listeAgent){
 			if(a.getCleHashage().equals(cle)==true){
 				return a;
 			}
@@ -88,9 +90,9 @@ public class SessionManager {
 	 * @param session
 	 * @return Rend true si tous les UV requis pour une sessions sont validés par l'agent
 	 */
-	public boolean rechercheUVrequis(Agent agent, Session session){
+	public boolean rechercheUVrequis(SerAgent agent, SerSession session){
 		boolean requisAcquis=true;
-		for(UV uvprerequis:session.getUv().getListeUV()){
+		for(SerUV uvprerequis : session.getSerUv().getPrerequis()){
 			if(agent.getAptitude().contains(uvprerequis)==false){requisAcquis=false;}
 		}
 		return requisAcquis;
@@ -105,8 +107,8 @@ public class SessionManager {
 	@DELETE
 	@Path("/suppression/{session}")
 	public synchronized void annuleCandidat(@PathParam("cleHashage") String cle, @PathParam("session") CliSession clSess) {
-		for(Server.Session ss : donnees.lSession) {
-			if(clSess.getUv().equals(ss.getUv()) && clSess.getLieu().equals(ss.getLieu()) && clSess.getDate().equals(ss.getDates())) {
+		for(SerSession ss : donnees.lSession) {
+			if(clSess.getId()==ss.getId()) {
 				if(rechercheAgent(cle, ss.getCandidatsAp()) != null) {
 					ss.removeAgent(rechercheAgent(cle, ss.getCandidatsAp()));
 				}
