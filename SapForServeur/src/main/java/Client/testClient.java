@@ -81,7 +81,7 @@ public class testClient {
 
 	private static void afficherSessionAccessible(List<ImpCliSession> lsession){
 		for(CliSession s:lsession){
-			System.err.println("*"+s.getUv().getNom());}
+			System.err.println("*"+s.getCliUv().getNom());}
 	}
 
 	private static java.net.URI getBaseURI() {
