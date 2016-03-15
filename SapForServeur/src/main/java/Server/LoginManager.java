@@ -1,15 +1,10 @@
 package Server;
+
 import java.util.ArrayList;
-
-
 import java.util.List;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
 import com.sun.jersey.spi.resource.Singleton;
-
-
 
 @Singleton
 @Path("/login")
@@ -29,7 +24,7 @@ public class LoginManager {
 	public synchronized String Connexion(@QueryParam("login") String log, @QueryParam("password") String pass) {
 	System.err.println(log +" : "+ pass);
 	// DEBUG
-	for (Agent p : donnees.lAgent ) {
+	for (SerAgent p : donnees.lAgent ) {
 		System.err.println((p.getMatricule().equals(log) && p.getPassword().equals(pass)));
 		if (p.getMatricule().equals(log) && p.getPassword().equals(pass)){ return p.getCleHashage();}
 	}
