@@ -84,7 +84,7 @@ public class SessionManager {
 	 * @return La liste des Sessions o� l'agent est inscrit suivant son role
 	 */
 
-	@GET
+@GET
 	@Path("/sessions")
 	public synchronized List<SessionT> CandidatSession(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
 
@@ -94,23 +94,27 @@ public class SessionManager {
 		for(SerSession s:donnees.lSession){
 			if(rol.equals("ApprenantCandidat")){
 				if(s.getCandidatsAp().contains(agent)){
-					lSessionCand.add(s);
+					SessionT nouvelle=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
+					lSessionCand.add(nouvelle);
 				}
 			}
 			else if(rol.equals("FormateurCandidat")){
 				if(s.getCandidatsFo().contains(agent)){
-					lSessionCand.add(s);
+					SessionT nouvelle=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
+					lSessionCand.add(nouvelle);
 				}
 			}
 			else if(rol.equals("ApprenantInscrit")){
 				if(s.getApprenants().contains(agent)){
-					lSessionCand.add(s);
+					SessionT nouvelle=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
+					lSessionCand.add(nouvelle);
 				}
 			}
 
 			else if(rol.equals("FormateurInscrit")){
 				if(s.getFormateurs().contains(agent)){
-					lSessionCand.add(s);
+					SessionT nouvelle=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
+					lSessionCand.add(nouvelle);
 				}
 			}
 		}
@@ -165,7 +169,7 @@ public class SessionManager {
 	 * @param codeS
 	 * @return Status sur la validation de la candidature
 	 */
-	@PUT
+	@POST
 	@Path ("/session/{codeSession}/{matricule}")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
@@ -324,7 +328,7 @@ public class SessionManager {
 	 * @return Liste des Stages pour lesquelles l'agent connect� est directeur
 	 */
 	@GET
-	@Path("/directeur/")
+	@Path("/directeur")
 	public List<Stage> ListeStageDirecteur(@PathParam("cleHashage") String cle, @QueryParam("role") String rol) {
 
 		List<Stage> ListeStage = new ArrayList<Stage>();
@@ -335,11 +339,13 @@ public class SessionManager {
 					Stage nouveau=new Stage();
 					List<SessionT> ListeSessTmp = new ArrayList<SessionT>();
 					for (SerSession  sess: s.getListeSerSessions() ){
-						ListeSessTmp.add(sess);
+						SessionT nouvelle=new SessionT(sess.getId(),new UV(sess.getUv().getNumero(),sess.getUv().getNom()), sess.getDate(), sess.getLieu(), sess.getNbMin(), sess.getNbMax(), sess.getNbFormateur());
+						
+						ListeSessTmp.add(nouvelle);
 					}				
 					nouveau.setTitle(s.getTitle());
 					nouveau.setCliListeSessions( ListeSessTmp );
-					AgentT clientDir = new AgentT(s.getCliDirecteur().getMatricule(), s.getCliDirecteur().getNom(), s.getCliDirecteur().getPrenom());
+					AgentT clientDir = new AgentT(s.getDirecteurSer().getMatricule(), s.getDirecteurSer().getNom(), s.getDirecteurSer().getPrenom());
 					nouveau.setCliDirecteur(clientDir);
 					ListeStage.add(nouveau);
 				}
