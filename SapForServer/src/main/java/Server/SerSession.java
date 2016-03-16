@@ -3,9 +3,9 @@ package Server;
 import java.util.ArrayList;
 import java.util.List;
 
-import Client.UV;
 
-public class SerSession extends Client.SessionT {
+
+public class SerSession {
 
     private int id;
     private SerUV uv;
