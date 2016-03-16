@@ -65,8 +65,12 @@ public class SessionManager {
 			for(SerSession s:donnees.lSession){
 				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getSerUv())==true){
 					CliSession nouvelle=new CliSession();
-					nouvelle=s;
-					sess.add(nouvelle);}
+					nouvelle.setId(s.getId());
+					nouvelle.setLieu(s.getLieu());
+					nouvelle.setCliUv(new CliUV(s.getSerUv().getNumero(),s.getSerUv().getNom()));
+					nouvelle.setDate(s.getDate());
+					sess.add(nouvelle);
+				}
 			}
 			return sess;	
 		}
@@ -82,9 +86,9 @@ public class SessionManager {
 
 	@GET
 	@Path("/sessions")
-	public synchronized List<Client.CliSession> CandidatSession(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
+	public synchronized List<CliSession> CandidatSession(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
 
-		List<Client.CliSession> lSessionCand=new ArrayList<Client.CliSession>();
+		List<CliSession> lSessionCand=new ArrayList<CliSession>();
 		SerAgent agent=rechercheAgent(cle, donnees.lAgent);
 
 		for(SerSession s:donnees.lSession){
