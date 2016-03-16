@@ -330,31 +330,23 @@ public class SessionManager {
 	@GET
 	@Path("/directeur")
 	public List<Stage> ListeStageDirecteur(@PathParam("cleHashage") String cle, @QueryParam("role") String rol) {
-
-		List<Stage> ListeStage = new ArrayList<Stage>();
-
-		if ( rol.equals("directeur") ){
-			for( SerStage s:donnees.lStage ){
-				if( s.getDirecteurSer().getCleHashage() ==  cle ){
-					Stage nouveau=new Stage();
-					List<SessionT> ListeSessTmp = new ArrayList<SessionT>();
-					for (SerSession  sess: s.getListeSerSessions() ){
-						SessionT nouvelle=new SessionT(sess.getId(),new UV(sess.getUv().getNumero(),sess.getUv().getNom()), sess.getDate(), sess.getLieu(), sess.getNbMin(), sess.getNbMax(), sess.getNbFormateur());
-						
-						ListeSessTmp.add(nouvelle);
-					}				
-					nouveau.setTitle(s.getTitle());
-					nouveau.setCliListeSessions( ListeSessTmp );
-					AgentT clientDir = new AgentT(s.getDirecteurSer().getMatricule(), s.getDirecteurSer().getNom(), s.getDirecteurSer().getPrenom());
-					nouveau.setCliDirecteur(clientDir);
-					ListeStage.add(nouveau);
+		List<Stage> listeStage=new ArrayList<Stage>();
+		if(rol.equals("directeur")){
+		for(SerStage stage:donnees.lStage){
+			if(stage.getDirecteurSer().getCleHashage().equals(cle)){
+				System.err.println("directeur");
+				List<SessionT> listeSession=new ArrayList<SessionT>();
+				for(SerSession s:stage.getListeSerSessions()){
+					SessionT session=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
+					listeSession.add(session);
 				}
+				Stage nouveau=new Stage(stage.getTitle(),listeSession,new AgentT(stage.getDirecteurSer().getMatricule(),stage.getDirecteurSer().getNom(),stage.getDirecteurSer().getPrenom()));
+			listeStage.add(nouveau);
 			}
-			return ListeStage;
-		} else {
-			return null;
 		}
-
+		return listeStage;
+		}
+		else {return null;}
 	}
 
 
