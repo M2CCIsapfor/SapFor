@@ -369,10 +369,10 @@ public class SessionManager {
 		SerAgent agent = rechercheAgent(cle, donnees.lAgent);
 
 		if(rol.equals("Apprenant")){ 
-			sers.getApprenants().add(agent);
+			sers.getCandidatsAp().add(agent);
 		}
 		else if(rol.equals("Formateur")){
-			sers.getFormateurs().add(agent);			   
+			sers.getCandidatsFo().add(agent);			   
 		}
 	}
 
