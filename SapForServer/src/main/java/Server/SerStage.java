@@ -3,10 +3,9 @@ package Server;
 import java.util.ArrayList;
 import java.util.List;
 
-import Client.AgentT;
-import Client.SessionT;
 
-public class SerStage extends Client.Stage {
+
+public class SerStage {
 
 	private String title;
 	private List<SerSession> listeSerSessions;
