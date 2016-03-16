@@ -118,7 +118,7 @@ public class Data {
 		List<SerAgent> lAg2 = new ArrayList<SerAgent>();
 		List<SerAgent> lAg3 = new ArrayList<SerAgent>();
 		
-		lAg1.add(julien);
+/*		lAg1.add(julien);
 		lAg2.add(sebastien); lAg2.add(julien);
 		lAg3.add(sebastien);
 		
@@ -127,7 +127,7 @@ public class Data {
 		srA.setCandidatsAp(lAg2); srA.setCandidatsFo(lAg3); srA.setApprenants(lAg1); srA.setFormateurs(lAg3);
 		sapA.setCandidatsAp(lAg3); sapA.setCandidatsFo(lAg3); sapA.setApprenants(lAg3); sapA.setFormateurs(lAg1);
 		interA.setCandidatsAp(lAg2); interA.setCandidatsFo(lAg3); interA.setApprenants(lAg3); interA.setFormateurs(lAg2);
-
+*/
 		debutants.addSession(interA); debutants.addSession(sapA); debutants.addSession(srA); debutants.addSession(incA); debutants.addSession(transA);
 
 		
