@@ -3,7 +3,7 @@ package Server;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SerUV extends Client.UV {
+public class SerUV  {
 
 	private Integer numero;
 	private String nom;
