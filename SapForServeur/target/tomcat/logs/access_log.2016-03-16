@@ -1,0 +1,11 @@
+127.0.0.1 - - [16/Mar/2016:08:51:30 +0100] "GET /rest/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-1 603
+127.0.0.1 - - [16/Mar/2016:08:51:30 +0100] "GET /rest/fff/sessions?role=apprenant HTTP/1.1" 500 1039 http-bio-8080-exec-2 66
+127.0.0.1 - - [16/Mar/2016:08:56:41 +0100] "GET /rest/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-1 392
+127.0.0.1 - - [16/Mar/2016:08:56:41 +0100] "GET /rest/fff/sessions?role=apprenant HTTP/1.1" 200 957 http-bio-8080-exec-2 125
+127.0.0.1 - - [16/Mar/2016:08:56:41 +0100] "GET /rest/fff/sessions?role=formateur HTTP/1.1" 200 14 http-bio-8080-exec-3 2
+127.0.0.1 - - [16/Mar/2016:08:59:32 +0100] "GET /rest/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-1 452
+127.0.0.1 - - [16/Mar/2016:08:59:32 +0100] "GET /rest/fff/sessions?role=apprenant HTTP/1.1" 200 954 http-bio-8080-exec-2 140
+127.0.0.1 - - [16/Mar/2016:08:59:33 +0100] "GET /rest/fff/sessions?role=formateur HTTP/1.1" 200 14 http-bio-8080-exec-3 3
+127.0.0.1 - - [16/Mar/2016:09:18:29 +0100] "GET /rest/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-1 105
+127.0.0.1 - - [16/Mar/2016:09:18:29 +0100] "GET /rest/fff/sessions?role=apprenant HTTP/1.1" 200 954 http-bio-8080-exec-2 93
+127.0.0.1 - - [16/Mar/2016:09:18:29 +0100] "GET /rest/fff/sessions?role=formateur HTTP/1.1" 200 14 http-bio-8080-exec-3 2
