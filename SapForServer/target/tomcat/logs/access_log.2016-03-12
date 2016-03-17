@@ -1,0 +1,14 @@
+127.0.0.1 - - [12/Mar/2016:16:04:51 +0100] "GET / HTTP/1.1" 500 2258 http-bio-8080-exec-1 3875
+127.0.0.1 - - [12/Mar/2016:16:04:51 +0100] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-2 8
+127.0.0.1 - - [12/Mar/2016:16:04:51 +0100] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-3 8
+127.0.0.1 - - [12/Mar/2016:16:46:59 +0100] "GET / HTTP/1.1" 500 2258 http-bio-8080-exec-1 2224
+127.0.0.1 - - [12/Mar/2016:18:07:37 +0100] "GET / HTTP/1.1" 500 2258 http-bio-8080-exec-1 3487
+127.0.0.1 - - [12/Mar/2016:18:12:05 +0100] "GET / HTTP/1.1" 500 2258 http-bio-8080-exec-1 2977
+127.0.0.1 - - [12/Mar/2016:19:08:06 +0100] "GET / HTTP/1.1" 500 2258 http-bio-8080-exec-1 3048
+127.0.0.1 - - [12/Mar/2016:19:29:56 +0100] "GET / HTTP/1.1" 500 2258 http-bio-8080-exec-1 1440
+127.0.0.1 - - [12/Mar/2016:19:35:11 +0100] "GET /rest/simple HTTP/1.1" 405 1013 http-bio-8080-exec-1 141
+127.0.0.1 - - [12/Mar/2016:19:36:23 +0100] "GET /rest HTTP/1.1" 405 1013 http-bio-8080-exec-3 4
+127.0.0.1 - - [12/Mar/2016:19:36:31 +0100] "GET /rest/simple HTTP/1.1" 405 1013 http-bio-8080-exec-4 3
+127.0.0.1 - - [12/Mar/2016:19:36:46 +0100] "GET /rest/login/simple HTTP/1.1" 200 21 http-bio-8080-exec-5 24
+127.0.0.1 - - [12/Mar/2016:23:50:36 +0100] "GET /rest/login?login=111&password=ma HTTP/1.1" 500 4005 http-bio-8080-exec-1 850
+127.0.0.1 - - [12/Mar/2016:23:53:48 +0100] "GET /rest/login?login=111&password=ma HTTP/1.1" 200 41 http-bio-8080-exec-1 232

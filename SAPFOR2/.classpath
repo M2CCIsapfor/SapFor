@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_51"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jackson-xc-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-apache-client-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-atom-abdera-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-client-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-core-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-guice-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-json-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-multipart-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-server-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-servlet-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-simple-server-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jersey-spring-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/oauth-client-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/oauth-server-1.19.jar"/>
+	<classpathentry kind="lib" path="/home/julien/softwares/BibliothequesEclipse/libJERSEY/oauth-signature-1.19.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

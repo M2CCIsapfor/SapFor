@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SessionsViewController">
+   <children>
+      <TableView fx:id="tabSession"  prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+           <!--  <TableColumn minWidth="51.0" prefWidth="330.0" text="Liste des Sessions ">
+               <columns>-->
+                  <TableColumn fx:id="sessionUV" minWidth="0.0" prefWidth="110.0" text="UV" />
+                  <TableColumn fx:id="sessionDate" prefWidth="110.0" text="Date" />
+                  <TableColumn fx:id="sessionPlace" prefWidth="110.0" text="Lieu" />
+                <!--  </columns>
+            </TableColumn>--> 
+          <TableColumn fx:id="priority" minWidth="0.0" prefWidth="70.0" text="Priorité" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

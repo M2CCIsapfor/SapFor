@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UserViewController">
+   <children>
+      <Button fx:id="director" layoutX="-3.0" layoutY="1.0" mnemonicParsing="false" onAction="#directorView" text="DIRECTEUR" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="student" layoutX="42.0" layoutY="147.0" mnemonicParsing="false" onAction="#accessListApprenant" prefHeight="27.0" prefWidth="99.0" text="APPRENANT" />
+      <Button fx:id="teacher" layoutX="42.0" layoutY="222.0" mnemonicParsing="false" onAction="#accessListFormateur" text="FORMATEUR" />
+      <BorderPane fx:id="listView" layoutX="181.0" layoutY="40.0" maxHeight="300.0" maxWidth="400.0" minHeight="300.0" minWidth="400.0" prefHeight="300.0" prefWidth="400.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="40.0">
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </BorderPane>
+      <ButtonBar layoutX="361.0" layoutY="346.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="39.0">
+        <buttons>
+            <Button fx:id="confirm" mnemonicParsing="false" onAction="#confirm" text="VALIDER" />
+          <Button fx:id="cancel" mnemonicParsing="false" onAction="#cancel" text="ANNULER" />
+        </buttons>
+      </ButtonBar>
+      <Button fx:id="sessions" layoutX="486.0" layoutY="1.0" mnemonicParsing="false" onAction="#userSessions" text="MES SESSIONS" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
