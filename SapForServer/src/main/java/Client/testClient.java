@@ -71,7 +71,7 @@ public class testClient {
 		
 
 		/**
-		 * test affichage des sessions auxquelles un apprenant Ã  candidater avant annulation
+		 * test affichage des sessions auxquelles un apprenant à candidater avant annulation
 		 */
 	
 
@@ -79,22 +79,11 @@ public class testClient {
 		List<SessionT> listeSessionCandidatAvant=new ArrayList<SessionT>();
 		WebResource service6=client.resource(getBaseURI()+"/"+cle+"/sessions?role=ApprenantCandidat");
 		listeSessionCandidatAvant=service6.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<SessionT>>(){});
-		System.err.println("Liste des sessions oÃ¹ je suis inscrit :");
+		System.err.println("Liste des sessions où je suis inscrit :");
 		afficherSessionAccessible(listeSessionCandidatAvant);
 		System.err.println("******************************************");
 		
-		
-		/**
-		 * test Liste des agents qui ont candidater Ã  la session en tant que apprenant :
-		 */
-		
-		List<AgentT> listeAgent=new ArrayList<AgentT>();
-		int i=listeSessionAccessibleCandidat.get(1).getId();
-		WebResource service9=client.resource(getBaseURI()+"/"+cle+"/session/"+i+"/candidats?role=ApprenantCandidat");
-		listeAgent=service9.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<AgentT>>(){});
-		System.err.println("Liste des agents qui ont candidater Ã  la session en tant que apprenant :");
-		afficherAgent(listeAgent);
-		System.err.println("******************************************");
+
 		
 
 		
@@ -108,31 +97,59 @@ public class testClient {
 		
 		
 		/**
-		 * test affichage des sessions auxquelles un apprenant Ã  candidater aprÃ¨s annulation
+		 * test affichage des sessions auxquelles un apprenant à candidater après annulation
 		 */
 		
 		List<SessionT> listeSessionCandidatApres=new ArrayList<SessionT>();
 		WebResource service8=client.resource(getBaseURI()+"/"+cle+"/sessions?role=ApprenantCandidat");
 		listeSessionCandidatApres=service8.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<SessionT>>(){});
-		System.err.println("AprÃ¨s une annulation : Liste des sessions oÃ¹ je suis inscrit :");
+		System.err.println("Après une annulation : Liste des sessions où je suis inscrit :");
 		afficherSessionAccessible(listeSessionCandidatApres);
 		System.err.println("******************************************");
 		
-		
-
-		
-		
+	
 		/**
-		 * Test Liste des stages oÃ¹ l'agent est directeur
+		 * En tant que directeur :
+		 * Test Liste des stages où l'agent est directeur
 		 */
 		
 		List<Stage> listeStage=new ArrayList<Stage>();
 		
 		WebResource service10=client.resource(getBaseURI()+"/"+cle+"/directeur?role=directeur");
 		listeStage=service10.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<Stage>>(){});
-		System.err.println("Liste des stages oÃ¹ je suis directeur :");
+		System.err.println("Liste des stages où je suis directeur :");
 		afficherStage(listeStage);
 		System.err.println("******************************************");
+	
+	
+		/**
+		 * En tant que directeur
+		 * test Liste des agents qui ont candidater à la session en tant que apprenant :
+		 */
+		
+		List<AgentT> listeAgent=new ArrayList<AgentT>();
+		int i=listeStage.get(0).getCliListeSessions().get(0).getId();
+		WebResource service9=client.resource(getBaseURI()+"/"+cle+"/session/"+i+"/candidats?role=ApprenantCandidat");
+		listeAgent=service9.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<AgentT>>(){});
+		System.err.println("Liste des agents qui ont candidater à la session en tant que apprenant :");
+		afficherAgent(listeAgent);
+		System.err.println("******************************************");
+		
+		/**
+		 * Le directeur passe un candidat du statut candidat au statut inscrit
+		 */
+		/*int code=listeStage.get(0).getCliListeSessions().get(0).getId();
+		String matricule=listeAgent.get(0).getMatricule();
+		WebResource service11=client.resource(getBaseURI()+"/"+cle+"/session/"+code+"/"+matricule);
+		service11.accept(MediaType.APPLICATION_JSON).post();
+		System.err.println("******************************************");
+		
+		List<AgentT> listeAgentInscrit=new ArrayList<AgentT>();
+		WebResource service12=client.resource(getBaseURI()+"/"+cle+"/session/"+i+"/candidats?role=ApprenantInscrit");
+		listeAgentInscrit=service12.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<AgentT>>(){});
+		System.err.println("Liste des agents qui sont inscrits à la session :");
+		afficherAgent(listeAgentInscrit);
+		System.err.println("******************************************");*/
 	
 	}
 	
@@ -140,7 +157,7 @@ public class testClient {
 	
 
 	private static void afficher(String cle) {
-		System.err.println("clÃ© Ã Â  rechercher : " +cle);
+		System.err.println("clé à  rechercher : " +cle);
 	}
 
 	private static void afficherSessionAccessible(List<SessionT> lsession){
@@ -153,7 +170,12 @@ public class testClient {
 	}
 	private static void afficherStage(List<Stage> lStage){
 		for(Stage s:lStage){
-			System.err.println("*"+s.getTitle());}
+			System.err.println("*"+s.getTitle());
+			System.err.println("**Session du stage :");
+			for(SessionT session: s.getCliListeSessions()){
+				System.err.println("***"+session.getId());
+			}
+		}
 	}
 
 	private static java.net.URI getBaseURI() {
