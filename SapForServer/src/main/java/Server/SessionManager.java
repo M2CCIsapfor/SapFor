@@ -55,6 +55,8 @@ public class SessionManager {
 					nouvelle.setId(s.getId());
 					nouvelle.setLieu(s.getLieu());
 					nouvelle.setCliUv(new UV(s.getSerUv().getNumero(),s.getSerUv().getNom()));
+//					System.err.println(s.getSerUv().getNumero());
+//					System.err.println(s.getSerUv().getNom());
 					nouvelle.setDate(s.getDate());
 					sess.add(nouvelle);}
 			}
@@ -86,7 +88,7 @@ public class SessionManager {
 
 	@GET
 	@Path("/sessions")
-	public synchronized List<SessionT> CandidatSession(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
+	public synchronized List<SessionT> SessionInscrit(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
 		
 		List<SessionT> lSessionCand=new ArrayList<SessionT>();
 		SerAgent agent=rechercheAgent(cle, donnees.lAgent);
@@ -294,8 +296,7 @@ public class SessionManager {
 
 
 	/**
-	 * Suppression ou demande de suppression de la candidature
-	 * d'un agent à une session
+	 * Suppression de la candidature d'un agent à une session
 	 * @param ImpCliSession
 	 * @param String : Clé de hashage
 	 */
@@ -354,10 +355,16 @@ public class SessionManager {
 	}
 
 
-
+	/**
+	 * Inscription à une session par un agent
+	 * @param cle
+	 * @param rol
+	 * @param code
+	 * @param priorite
+	 */
 	@POST
 	@Path("/submit")
-	public void ajouterSession(@PathParam("cleHashage")String cle,@QueryParam("role") String rol,
+	public void InscriptionSession(@PathParam("cleHashage")String cle,@QueryParam("role") String rol,
 			@QueryParam("session") int code,@QueryParam("prio") String priorite){
 
 

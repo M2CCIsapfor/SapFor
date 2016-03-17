@@ -17,17 +17,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 public class SessionT {
 
-    private int id;
-	private UV uv;
-    private String date;
-    private String lieu;
-    private Integer nbMin;
-    private Integer nbMax;
-    private Integer nbFormateur;
+    protected int id;
+    protected UV uv;
+    protected int prio;
+    protected String date;
+    protected String lieu;
+    protected Integer nbMin;
+    protected Integer nbMax;
+    protected Integer nbFormateur;
 
 
     public SessionT() {
-    	this.id = new Integer(0);
+    	this.id = 0;
+    	this.prio = 0;
         this.date = new String();
         this.lieu = new String();
         this.nbFormateur = new Integer(0);
@@ -38,6 +40,7 @@ public class SessionT {
 
     public SessionT(int id,UV uv, String date, String lieu, Integer nbMin, Integer nbMax, Integer nbFormateur) {
         this.id = id;
+    	this.prio = 0;
     	this.uv = uv;
         this.date = date;
         this.lieu = lieu;
@@ -48,6 +51,7 @@ public class SessionT {
     
     public SessionT(int id,UV uv, String lieu, String date){
         this.id = id;
+    	this.prio = 0;
     	this.uv = uv;
         this.date = date;
         this.lieu = lieu;

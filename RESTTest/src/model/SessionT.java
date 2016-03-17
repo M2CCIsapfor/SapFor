@@ -15,7 +15,7 @@ public class SessionT {
 	protected int id;
 	protected UV uv;
 	protected int prio;
-	protected Date date;
+	protected String date;
 	protected String lieu;
 	protected Integer nbMin;
 	protected Integer nbMax;
@@ -23,7 +23,7 @@ public class SessionT {
 
 	public SessionT() {
 		this.id = 0;
-		this.date = new Date();
+		this.date = new String();
 		this.lieu = new String();
 		this.nbFormateur = new Integer(0);
 		this.nbMax = new Integer(0);
@@ -32,7 +32,7 @@ public class SessionT {
 
 	}
 
-	public SessionT(int id, UV uv, Date date, String lieu, Integer nbMin, Integer nbMax, Integer nbFormateur) {
+	public SessionT(int id, UV uv, String date, String lieu, Integer nbMin, Integer nbMax, Integer nbFormateur) {
 		setId(id);
 		setUV(uv);
 		setDate(date);
@@ -59,7 +59,7 @@ public class SessionT {
 		return uv;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
@@ -87,7 +87,7 @@ public class SessionT {
 		this.id = id;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

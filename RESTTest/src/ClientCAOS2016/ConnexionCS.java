@@ -518,7 +518,7 @@ public class ConnexionCS {
 	 */
 	private List<Stage> getListeStage(String refMethode) {
 		List<Stage> listeA = new ArrayList<Stage>();
-		listeA = service.path(idConnexion + "/" + refMethode).accept(MediaType.APPLICATION_JSON)
+		listeA = service.path(idConnexion + "/" +refMethode).queryParam("role","directeur").accept(MediaType.APPLICATION_JSON)
 				.get(new GenericType<List<Stage>>() {
 				});
 		return listeA;

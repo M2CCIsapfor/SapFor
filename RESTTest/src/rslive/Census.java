@@ -43,9 +43,9 @@ public class Census {
 		listeUV.add(new UV(3, "uv3"));
 
 		listeST = new ArrayList<SessionT>();
-		listeST.add(new SessionT(1, new UV(1, "uv1"), new Date(), "Rennes", 5, 10, 2));
-		listeST.add(new SessionT(2, new UV(2, "uv2"), new Date(), "Rennes", 5, 10, 2));
-		listeST.add(new SessionT(3, new UV(2, "uv2"), new Date(), "Rennes", 5, 10, 2));
+		listeST.add(new SessionT(1, new UV(1, "uv1"), new String(), "Rennes", 5, 10, 2));
+		listeST.add(new SessionT(2, new UV(2, "uv2"), new String(), "Rennes", 5, 10, 2));
+		listeST.add(new SessionT(3, new UV(2, "uv2"), new String(), "Rennes", 5, 10, 2));
 
 		listAgentT = new ArrayList<AgentT>();
 		listAgentT.add(new AgentT("mat1", "Toure", "Ibra"));

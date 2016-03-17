@@ -80,6 +80,7 @@ public class Data {
 		christophe.setCleHashage("eee");
 		
 		SerAgent julien = new SerAgent("666", "ju");
+		julien.addUV(inc2); julien.addUV(inc1); julien.addUV(sap1);
 		julien.setCleHashage("fff");
 		
 		SerAgent ibrahima = new SerAgent("777", "ib");
@@ -118,16 +119,16 @@ public class Data {
 		List<SerAgent> lAg2 = new ArrayList<SerAgent>();
 		List<SerAgent> lAg3 = new ArrayList<SerAgent>();
 		
-/*		lAg1.add(julien);
+		lAg1.add(julien);
 		lAg2.add(sebastien); lAg2.add(julien);
 		lAg3.add(sebastien);
 		
 		transA.setCandidatsAp(lAg1); transA.setCandidatsFo(lAg3); transA.setApprenants(lAg3); transA.setFormateurs(lAg3);
 		incA.setCandidatsAp(lAg3); incA.setCandidatsFo(lAg1); incA.setApprenants(lAg3); incA.setFormateurs(lAg3);
-		srA.setCandidatsAp(lAg2); srA.setCandidatsFo(lAg3); srA.setApprenants(lAg1); srA.setFormateurs(lAg3);
+		srA.setCandidatsAp(lAg3); srA.setCandidatsFo(lAg3); srA.setApprenants(lAg1); srA.setFormateurs(lAg3);
 		sapA.setCandidatsAp(lAg3); sapA.setCandidatsFo(lAg3); sapA.setApprenants(lAg3); sapA.setFormateurs(lAg1);
-		interA.setCandidatsAp(lAg2); interA.setCandidatsFo(lAg3); interA.setApprenants(lAg3); interA.setFormateurs(lAg2);
-*/
+		interA.setCandidatsAp(lAg2); interA.setCandidatsFo(lAg3); interA.setApprenants(lAg3); interA.setFormateurs(lAg3);
+
 		debutants.addSession(interA); debutants.addSession(sapA); debutants.addSession(srA); debutants.addSession(incA); debutants.addSession(transA);
 
 		
@@ -142,7 +143,7 @@ public class Data {
 		SerSession incC = new SerSession(013, inc3, "Strasbourg", "02-05-2016");
 		SerSession srC = new SerSession(014, sr1, "Strasbourg", "05-05-2016");
 		SerSession sapC = new SerSession(015, sap2, "Strasbourg", "03-05-2016");
-		SerStage intermediaires = new SerStage("intermediaires", christophe);
+		SerStage intermediaires = new SerStage("intermediaires", julien);
 		intermediaires.addSession(incC); intermediaires.addSession(srC); intermediaires.addSession(sapC);
 		
 		lSession.add(interB); lSession.add(interA); lSession.add(sapC); lSession.add(srC); lSession.add(incC);
