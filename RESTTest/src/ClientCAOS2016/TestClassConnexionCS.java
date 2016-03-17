@@ -38,7 +38,7 @@ public class TestClassConnexionCS {
 
 	public static void main(String[] args) {
 
-		ConnexionCS connex = new ConnexionCS("111", "ma");
+		ConnexionCS connex = new ConnexionCS("666", "ju");
 
 		// afficher(connex.getListeUV("agent"));
 		System.out.println("getIdConnexion()");
@@ -51,8 +51,8 @@ public class TestClassConnexionCS {
 		//afficherSession(connex.getListeSessions("sessionT"));
 		afficherSession(connex.getListSessionApprenant());
 		
-		System.out.println("getListeAgents()");
-		afficherAgent(connex.getListeAgents("agent"));
+		/*System.out.println("getListeAgents()");
+		afficherAgent(connex.getListeAgents("agent"));*/
 		
 		System.out.println("getListSessionFormateur()");
 		afficherSession(connex.getListSessionFormateur());
@@ -68,15 +68,15 @@ public class TestClassConnexionCS {
 		System.out.println("getListSessionInscritFormateur()");
 		afficherSession(connex.getListSessionInscritFormateur());
 		
-		System.out.println("getListStage()");
-		afficherStage(connex.getListStage());
+		/*System.out.println("getListStage()");
+		afficherStage(connex.getListStage());*/
 		
 		
 		System.out.println("getListSessionInscritApprenant()");
 		afficherSession(connex.getListSessionInscritApprenant());
 				
-		System.out.println("getListAgentCandidatApprenant()");
-		afficherAgent(connex.getListAgentCandidatApprenant(23));
+		/*System.out.println("getListAgentCandidatApprenant()");
+		afficherAgent(connex.getListAgentCandidatApprenant(23));*/
 		
 		
 		
