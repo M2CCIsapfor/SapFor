@@ -84,18 +84,21 @@ public class SessionManager {
 	 * @return La liste des Sessions o� l'agent est inscrit suivant son role
 	 */
 
-@GET
+	@GET
 	@Path("/sessions")
 	public synchronized List<SessionT> CandidatSession(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
-
+		
 		List<SessionT> lSessionCand=new ArrayList<SessionT>();
 		SerAgent agent=rechercheAgent(cle, donnees.lAgent);
 
 		for(SerSession s:donnees.lSession){
 			if(rol.equals("ApprenantCandidat")){
+				System.err.println("contient : "+s.getCandidatsAp().contains(agent));
 				if(s.getCandidatsAp().contains(agent)){
 					SessionT nouvelle=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
+					
 					lSessionCand.add(nouvelle);
+					
 				}
 			}
 			else if(rol.equals("FormateurCandidat")){
@@ -169,7 +172,7 @@ public class SessionManager {
 	 * @param codeS
 	 * @return Status sur la validation de la candidature
 	 */
-	@POST
+	@PUT
 	@Path ("/session/{codeSession}/{matricule}")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
@@ -332,6 +335,7 @@ public class SessionManager {
 	public List<Stage> ListeStageDirecteur(@PathParam("cleHashage") String cle, @QueryParam("role") String rol) {
 		List<Stage> listeStage=new ArrayList<Stage>();
 		if(rol.equals("directeur")){
+			
 		for(SerStage stage:donnees.lStage){
 			if(stage.getDirecteurSer().getCleHashage().equals(cle)){
 				System.err.println("directeur");
