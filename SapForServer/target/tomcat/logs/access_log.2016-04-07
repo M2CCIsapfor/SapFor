@@ -1,0 +1,4 @@
+127.0.0.1 - - [07/Apr/2016:22:25:22 +0200] "GET /s/login?login=&password=password HTTP/1.1" 200 41 http-bio-8080-exec-1 362
+127.0.0.1 - - [07/Apr/2016:22:25:25 +0200] "GET /s/Mot%20de%20passe%20ou%20login%20invalide/sessionsAcc?role=apprenant HTTP/1.1" 500 3171 http-bio-8080-exec-2 62
+127.0.0.1 - - [07/Apr/2016:22:25:36 +0200] "GET /s/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-3 7
+127.0.0.1 - - [07/Apr/2016:22:25:38 +0200] "GET /s/fff/sessionsAcc?role=apprenant HTTP/1.1" 200 956 http-bio-8080-exec-4 350

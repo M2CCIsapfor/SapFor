@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UserSessionsController">
+   <children>
+      <ButtonBar layoutX="361.0" layoutY="346.0" prefHeight="40.0" prefWidth="200.0">
+         <buttons>
+            <Button fx:id="confirm" mnemonicParsing="false" onAction="#confirm" text="VALIDER" />
+            <Button fx:id="cancel" mnemonicParsing="false" onAction="#cancel" text="ANNULER" />
+         </buttons>
+      </ButtonBar>
+      <Button fx:id="back" layoutY="-13.0" mnemonicParsing="false" onAction="#back" text="RETOUR" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <TableView fx:id="tab" layoutX="19.0" layoutY="40.0" prefHeight="300.0" prefWidth="562.0">
+         <columns>
+            <TableColumn fx:id="sessionUV" prefWidth="106.0" text="UV" />
+            <TableColumn fx:id="sessionDate" prefWidth="100.0" text="DATE" />
+            <TableColumn fx:id="sessionPlace" prefWidth="150.0" text="LIEU" />
+            <TableColumn fx:id="agentRole" prefWidth="106.0" text="RÔLE" />
+            <TableColumn fx:id="sessionStatus" prefWidth="100.0" text="STATUT" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

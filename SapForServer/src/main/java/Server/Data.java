@@ -2,6 +2,11 @@ package Server;
 
 import java.util.*;
 
+/**
+ * Classe de generation des donnees	
+ * @author Equipe Serveur
+ *
+ */
 public class Data {
 
 	public List<SerUV> lUV;
@@ -9,8 +14,9 @@ public class Data {
 	public List<SerSession> lSession;
 	public List<SerStage> lStage;
 	
-	
-	
+	/**
+	 * Constructeur sans parametres de la classe avec le jeu de donnees
+	 */
 	public Data() {
 		this.lAgent = new ArrayList<SerAgent>();
 		this.lUV = new ArrayList<SerUV>();
@@ -153,7 +159,10 @@ public class Data {
 		lStage.add(intermediaires); lStage.add(experts); lStage.add(debutants);
 	}
 	
-
+	/**
+	 * Fonction main de la classe Data
+	 * @param args
+	 */
 	public static void main (String[] args) {
 		Data data = new Data();
 		for (SerStage stage : data.lStage) {

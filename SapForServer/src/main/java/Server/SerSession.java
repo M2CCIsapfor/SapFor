@@ -3,8 +3,10 @@ package Server;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+/**
+ * Classe Session du Serveur
+ * @author Equipe Serveur
+ */
 public class SerSession {
 
     private int id;
@@ -21,10 +23,9 @@ public class SerSession {
 	private List<SerAgent> apprenants;
 	private List<SerAgent> formateurs;
 
-	/**
-	 * Constructeur Session avec juste code Session
-	 * @param id
-	 */
+    /**
+     * Constructeur vide de la Session
+     */
 	public SerSession() {
 		this.id = new Integer(0);
 		this.uv = new SerUV();
@@ -43,11 +44,11 @@ public class SerSession {
 
 
 	/**
-	 * Constructeur Session avec :
-	 * @param id
-	 * @param uv
-	 * @param lieu
-	 * @param date
+	 * Constructeur de la Session
+     * @param id Identifiant de la Session
+     * @param uv UV reliée à la Session
+     * @param lieu Lieu de la Session
+     * @param date Date de la Session
 	 */
 	public SerSession(int id, SerUV uv, String lieu, String date){
 		this.id = id;
@@ -65,149 +66,217 @@ public class SerSession {
 		this.formateurs = new ArrayList<SerAgent>();
 	}
 
-
+    /**.
+     * Accesseur identifiant de la Session
+     * @return Identifiant de la Session
+     */
 	public int getId() {
 		return id;
 	}
 
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
+    /**
+     * Accesseur UV de la Session
+     * @return UV relié à la Session
+     */
 	public SerUV getUv() {
 		return uv;
 	}
 
-
-	public void setUv(SerUV uv) {
-		this.uv = uv;
-	}
-
-
+	/**
+	 * Accesseur date de la Session
+	 * @return Date de la Session
+	 */
 	public String getDate() {
 		return date;
 	}
 
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-
+    /**
+     * Accesseur lieu de la Session
+     * @return Lieu de la Session
+     */
 	public String getLieu() {
 		return lieu;
 	}
 
-
-	public void setLieu(String lieu) {
-		this.lieu = lieu;
-	}
-
-
+    /**
+     * Accesseur nombre minimum de participants de la Session
+     * @return Nombre minimum de participants de la Session
+     */
 	public Integer getNbMin() {
 		return nbMin;
 	}
 
-
-	public void setNbMin(int nbMin) {
-		this.nbMin = nbMin;
-	}
-
-
+	/**
+     * Accesseur nombre maximum de participants de la Session
+     * @return nombre maximum de participants de la Session
+     */
 	public Integer getNbMax() {
 		return nbMax;
 	}
 
-
-	public void setNbMax(int nbMax) {
-		this.nbMax = nbMax;
-	}
-
-
+    /**
+     * Accesseur nombre de formateurs de la Session
+     * @return Nombre de formateurs de la Session
+     */
 	public Integer getNbFormateur() {
 		return nbFormateur;
 	}
 
-
-	public void setNbFormateur(int nbFormateur) {
-		this.nbFormateur = nbFormateur;
-	}
-
-
-	public SerUV getSerUv() {
-		return uv;
-	}
-
-
-	public void setSerUv(SerUV uv) {
-		this.uv = uv;
-	}
-
-
+    /**
+     * Accesseur nombre d'apprenants de la Session
+     * @return Nombre d'apprenants de la Session
+     */
 	public int getNbApprenant() {
 		return nbApprenant;
 	}
 
-
-	public void setNbApprenant(int nbApprenant) {
-		this.nbApprenant = nbApprenant;
-	}
-
-
+    /**
+     * Accesseur nombre minimum de formateurs de la Session
+     * @return Nombre minimum de formateurs de la Session
+     */
 	public int getMinFormateur() {
 		return minFormateur;
 	}
 
-
-	public void setMinFormateur(int minFormateur) {
-		this.minFormateur = minFormateur;
-	}
-
-
+    /**
+     * Accesseur liste des candidats apprenants de la Session
+     * @return Liste des candidats apprenants de la Session
+     */
 	public List<SerAgent> getCandidatsAp() {
 		return candidatsAp;
 	}
 
-
-	public void setCandidatsAp(List<SerAgent> candidatsAp) {
-		this.candidatsAp = candidatsAp;
-	}
-
-
+    /**
+     * Accesseur liste des candidats formateurs de la Session
+     * @return Liste des candidats formateurs de la Session
+     */
 	public List<SerAgent> getCandidatsFo() {
 		return candidatsFo;
 	}
 
-
-	public void setCandidatsFo(List<SerAgent> candidatsFo) {
-		this.candidatsFo = candidatsFo;
-	}
-
-
+    /**
+     * Accesseur liste des apprenants acceptés pour la Session
+     * @return Liste des apprenants acceptés pour la Session
+     */
 	public List<SerAgent> getApprenants() {
 		return apprenants;
 	}
 
-
-	public void setApprenants(List<SerAgent> apprenants) {
-		this.apprenants = apprenants;
-	}
-
-
+    /**
+     * Accesseur liste des formateurs acceptés pour la Session
+     * @return Liste des formateurs acceptés pour la Session
+     */
 	public List<SerAgent> getFormateurs() {
 		return formateurs;
 	}
 
+    /**
+     * Modifieur de l'identifiant de la Session
+     * @param id Identifiant de la Session
+     */
+	public void setId(int id) {
+		this.id = id;
+	}
 
+	/**
+	 * Modifieur de l'UV de la Session
+	 * @param uv UV relié à la Session
+	 */
+	public void setUv(SerUV uv) {
+		this.uv = uv;
+	}
+
+    /**
+     * Modifieur de la date de la Session
+     * @param date Date de la Session
+     */
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+    /**
+     * Modifieur du lieu de la Session
+     * @param lieu Lieu de la Session
+     */
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
+
+    /**
+     * Modifieur du nombre minimum de participants de la Session
+     * @param nbMin Nombre minimum de participants de la Session
+     */
+	public void setNbMin(int nbMin) {
+		this.nbMin = nbMin;
+	}
+
+    /**
+     * Modifieur du nombre maximum de participants de la Session
+     * @param nbMax Nombre maximum de participant à la Session
+     */
+	public void setNbMax(int nbMax) {
+		this.nbMax = nbMax;
+	}
+
+    /**
+     * Modifieur du nombre de formateurs de la Session
+     * @param nbFormateur Nombre de formateurs de la Session
+     */
+	public void setNbFormateur(int nbFormateur) {
+		this.nbFormateur = nbFormateur;
+	}
+
+    /**
+     * Modifieur du nombre d'apprenants de la Session
+     * @param nbApprenant Nombre d'apprenants de la Session
+     */
+	public void setNbApprenant(int nbApprenant) {
+		this.nbApprenant = nbApprenant;
+	}
+
+    /**
+     * Modifieur du nombre minimum de formateurs de la Session
+     * @param minFormateur Nombre minimum de formateurs de la Session
+     */
+	public void setMinFormateur(int minFormateur) {
+		this.minFormateur = minFormateur;
+	}
+
+    /**
+     * Modifieur du nombre de candidats apprenants de la Session
+     * @param candidatsAp Nombre de candidats apprenants de la Session
+     */
+	public void setCandidatsAp(List<SerAgent> candidatsAp) {
+		this.candidatsAp = candidatsAp;
+	}
+
+	/**
+     * Modifieur du nombre de candidats formateurs de la Session
+     * @param candidatsFo Nombre de candidats formateurs de la Session
+     */
+	public void setCandidatsFo(List<SerAgent> candidatsFo) {
+		this.candidatsFo = candidatsFo;
+	}
+
+	/**
+     * Modifieur du nombre d'apprenants acceptés pour la Session
+     * @param apprenants Nombre d'apprenants acceptés pour la Session
+     */
+	public void setApprenants(List<SerAgent> apprenants) {
+		this.apprenants = apprenants;
+	}
+
+	/**
+     * Modifieur du nombre de formateurs acceptés pour la Session
+     * @param formateurs Nombre de formateurs acceptés pour la Session
+     */
 	public void setFormateurs(List<SerAgent> formateurs) {
 		this.formateurs = formateurs;
 	}
 	
 	/**
 	 * Valider un  candidat Apprenant (en temps que directeur)
-	 * @param Apprenants
+	 * @param Apprenant Agent validé en tant que candidat
 	 */
 	public void validerApprenant(SerAgent Apprenant) {
 		apprenants.add(Apprenant);
@@ -216,7 +285,7 @@ public class SerSession {
 	
 	/**
 	 * Valider un  candidat formateur (en temps que directeur)
-	 * @param Formateurs
+	 * @param Formateur Agent validé en tant que formateur
 	 */
 	public void validerFormateur(SerAgent Formateur) {
 		formateurs.add(Formateur);
@@ -225,7 +294,7 @@ public class SerSession {
 
 	/**
 	 * Fonction de retrait d'un agent dans une liste de Session par un Candidat
-	 * @param agent
+	 * @param agent Agent a supprimer des listes de la Session
 	 */
 	public void removeAgent(SerAgent agent) {
 		if(this.candidatsAp.contains(agent)) {

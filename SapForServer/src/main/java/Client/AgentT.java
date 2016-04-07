@@ -4,8 +4,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 /**
- *
- * @author Yannick - Abdourahman - Fran�ois
+ *	Classe Agent commune Client et Serveur
+ * @author Equipe Serveur
  */
 public class AgentT {
 
@@ -14,7 +14,7 @@ public class AgentT {
 	private String prenom ;
 
 	/**
-	 * constructeur vide de l'agent
+	 * Constructeur vide de l'agent
 	 */
 	public AgentT(){
 		this.matricule = new String();
@@ -23,8 +23,8 @@ public class AgentT {
 	}
 
 	/**
-	 * constructeur de l'agent
-	 * @param matricule
+	 * Constructeur de l'agent
+	 * @param matricule Matricule de l'Agent
 	 */
 	public AgentT(String matricule) {
 		this.matricule = matricule;
@@ -33,9 +33,9 @@ public class AgentT {
 	}
 
 	/**
-	 * constructeur de l'agent
-	 * @param matricule de l'agent
-	 * @param nom de l'agent
+	 * Constructeur de l'agent
+	 * @param matricule Matricule de l'Agent
+	 * @param nom Nom de l'Agent
 	 */
 	public AgentT(String matricule, String nom) {
 		this.matricule = matricule;
@@ -44,10 +44,10 @@ public class AgentT {
 	}
 
 	/**
-	 * constructeur de l'agent
-	 * @param matricule
-	 * @param nom
-	 * @param prenom
+	 * Constructeur de l'agent
+	 * @param matricule Matricule de l'Agent
+	 * @param nom Nom de l'Agent
+	 * @param prenom Prenom de l'Agent
 	 */
 	public AgentT(String matricule, String nom, String prenom) {
 		this.matricule = matricule;
@@ -56,55 +56,48 @@ public class AgentT {
 	}
 
 	/**
-	 *
-	 * @return matricule
+	 * Accesseur Matricule de l'Agent
+	 * @return Matricule de l'Agent
 	 */
 	public String getMatricule() {
 		return matricule;
 	}
 
 	/**
-	 *
-	 * @return nom de l'agent
+	 * Accesseur Nom de l'Agent
+	 * @return Nom de l'Agent
 	 */
 	public String getNom() {
 		return nom;
 	}
 
 	/**
-	 *
-	 * @return prenom de l'agent
+	 * Accesseur Prenom de l'Agent
+	 * @return Prenom de l'Agent
 	 */
 	public String getPrenom() {
 		return prenom;
 	}
 
-
-
-
-
 	/**
-	 * setter du matricule de l agent
-	 *
-	 * @param matricule
+	 * Modifieur Matricule de l'Agent
+	 * @param matricule Matricule de l'Agent
 	 */
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
 	}
 
 	/**
-	 * setter du nom de l'agent
-	 *
-	 * @param nom
+	 * Modifieur Nom de l'Agent
+	 * @param nom Nom de l'Agent
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * setter du prenom de l'agent
-	 *
-	 * @param prenom
+	 * Modifieur prenom de l'Agent
+	 * @param prenom Prenom de l'Agent
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;

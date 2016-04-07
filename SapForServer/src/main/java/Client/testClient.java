@@ -16,14 +16,18 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe de test de connexion avec le serveur
+ * @author Equipe Serveur
+ *
+ */
 public class testClient {
 
+	/**
+	 * Main permettant de tester la connexion Serveur
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		/**
-		 * test connexion
-		 */
 
 		String cle=new String();
 
@@ -38,6 +42,7 @@ public class testClient {
 		afficher(cle);
 		System.err.println("******************************************");
 
+		
 		/**
 		 * test session accessible par l'apprenant
 		 */
@@ -47,12 +52,11 @@ public class testClient {
 		System.err.println("Liste des sessions accessibles en tant qu'apprenant :");
 		afficherSessionAccessible(listeSessionAccessibleCandidat);
 		System.err.println("******************************************");
-
+		
 		
 		/**
 		 *test session accessible par le formateur
 		 */
-
 		List<SessionT> listeSessionAccessibleFormateur=new ArrayList<SessionT>();
 		WebResource service3=client.resource(getBaseURI()+"/"+cle+"/sessionsAcc?role=formateur");
 		listeSessionAccessibleFormateur=service3.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<SessionT>>(){});
@@ -73,8 +77,6 @@ public class testClient {
 		/**
 		 * test affichage des sessions auxquelles un apprenant � candidater avant annulation
 		 */
-	
-
 		//Affichage Candidature
 		List<SessionT> listeSessionCandidatAvant=new ArrayList<SessionT>();
 		WebResource service6=client.resource(getBaseURI()+"/"+cle+"/sessions?role=ApprenantCandidat");
@@ -82,10 +84,7 @@ public class testClient {
 		System.err.println("Liste des sessions o� je suis inscrit :");
 		afficherSessionAccessible(listeSessionCandidatAvant);
 		System.err.println("******************************************");
-		
-
-		
-
+	
 		
 		/**
 		 * test suppression d'une candidature par un candidat
@@ -94,12 +93,9 @@ public class testClient {
 		WebResource service7=client.resource(getBaseURI()+"/"+cle+"/delete?session="+ssup);
 		service7.accept(MediaType.APPLICATION_JSON).delete();
 		
-		
-		
 		/**
 		 * test affichage des sessions auxquelles un apprenant � candidater apr�s annulation
 		 */
-		
 		List<SessionT> listeSessionCandidatApres=new ArrayList<SessionT>();
 		WebResource service8=client.resource(getBaseURI()+"/"+cle+"/sessions?role=ApprenantCandidat");
 		listeSessionCandidatApres=service8.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<SessionT>>(){});
@@ -112,7 +108,6 @@ public class testClient {
 		 * En tant que directeur :
 		 * Test Liste des stages o� l'agent est directeur
 		 */
-		
 		List<Stage> listeStage=new ArrayList<Stage>();
 		
 		WebResource service10=client.resource(getBaseURI()+"/"+cle+"/directeur?role=directeur");
@@ -126,7 +121,6 @@ public class testClient {
 		 * En tant que directeur
 		 * test Liste des agents qui ont candidater � la session en tant que apprenant :
 		 */
-		
 		List<AgentT> listeAgent=new ArrayList<AgentT>();
 		int i=listeStage.get(0).getCliListeSessions().get(0).getId();
 		WebResource service9=client.resource(getBaseURI()+"/"+cle+"/session/"+i+"/candidats?role=ApprenantCandidat");
@@ -153,21 +147,36 @@ public class testClient {
 	
 	}
 	
-	
-	
-
+	/**
+	 * Affichage de la cle a rechercher
+	 * @param cle Cle a rechercher
+	 */
 	private static void afficher(String cle) {
-		System.err.println("cl� � rechercher : " +cle);
+		System.err.println("cle a rechercher : " +cle);
 	}
 
+	/**
+	 * Affichage de la liste des Sessions accessibles
+	 * @param lsession Liste des Sessions accessibles
+	 */
 	private static void afficherSessionAccessible(List<SessionT> lsession){
 		for(SessionT s:lsession){
 			System.err.println("*"+s.getCliUv().getNom()+" idSession="+s.getId());}
 	}
+	
+	/**
+	 * Affichage de la liste des Agents
+	 * @param lAgent Liste des Agents
+	 */
 	private static void afficherAgent(List<AgentT> lAgent){
 		for(AgentT s:lAgent){
 			System.err.println("*"+s.getMatricule());}
 	}
+
+	/**
+	 * Affichage de la liste des Stages
+	 * @param lStage Liste des Stages
+	 */
 	private static void afficherStage(List<Stage> lStage){
 		for(Stage s:lStage){
 			System.err.println("*"+s.getTitle());
@@ -178,6 +187,10 @@ public class testClient {
 		}
 	}
 
+	/**
+	 * Construction de l'URL de connexion
+	 * @return URL de connexion
+	 */
 	private static java.net.URI getBaseURI() {
 		java.net.URI uri =
 				UriBuilder.fromUri("http://localhost:8080/s").build();

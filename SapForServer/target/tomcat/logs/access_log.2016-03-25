@@ -1,0 +1,8 @@
+127.0.0.1 - - [25/Mar/2016:21:46:25 +0100] "GET /s/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-1 198
+127.0.0.1 - - [25/Mar/2016:21:46:30 +0100] "GET /s/fff/sessionsAcc?role=apprenant HTTP/1.1" 200 956 http-bio-8080-exec-2 160
+127.0.0.1 - - [25/Mar/2016:21:47:18 +0100] "GET /s/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-4 13
+127.0.0.1 - - [25/Mar/2016:21:47:21 +0100] "GET /s/fff/sessionsAcc?role=apprenant HTTP/1.1" 200 956 http-bio-8080-exec-5 11
+127.0.0.1 - - [25/Mar/2016:21:55:42 +0100] "GET /s/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-1 127
+127.0.0.1 - - [25/Mar/2016:21:56:11 +0100] "GET /s/login?login=666&password=ju HTTP/1.1" 200 13 http-bio-8080-exec-3 8
+127.0.0.1 - - [25/Mar/2016:21:56:13 +0100] "GET /s/fff/sessionsAcc?role=apprenant HTTP/1.1" 200 956 http-bio-8080-exec-4 91
+127.0.0.1 - - [25/Mar/2016:22:06:56 +0100] "GET /s/fff/sessionsAcc?role=formateur HTTP/1.1" 200 339 http-bio-8080-exec-6 9

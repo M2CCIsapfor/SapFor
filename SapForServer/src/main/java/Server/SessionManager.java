@@ -15,7 +15,12 @@ import Client.SessionT;
 import Client.Stage;
 import Client.UV;
 
-
+/**
+ * Classe de traitement des requetes
+ * du client via les URLs de l'API REST
+ * @author Equipe Serveur
+ *
+ */
 @Singleton
 @Path("{cleHashage}")
 @Produces({MediaType.APPLICATION_JSON})
@@ -37,8 +42,8 @@ public class SessionManager {
 
 	/**
 	 * Fonction d'affichage de la liste des Sessions accessible pour un Agent
-	 * @param cle : Clé de hashage fourni à l'agent lors de la connexion
-	 * @param rol : Role de l'Agent : Apprenant ou Formateur
+	 * @param cle Clé de hashage fourni à l'agent lors de la connexion
+	 * @param rol Role de l'Agent : Apprenant ou Formateur
 	 * @return La liste des Sessions qui sont accessible à l'agent connecté
 	 */
 	@GET
@@ -50,13 +55,13 @@ public class SessionManager {
 		//Liste des sessions accessibles en tant qu'apprenant
 		if (rol.equals("apprenant")){
 			for(SerSession s:donnees.lSession){
-				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getSerUv())!=true){
+				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getUv())!=true){
 					SessionT nouvelle=new SessionT();
 					nouvelle.setId(s.getId());
 					nouvelle.setLieu(s.getLieu());
-					nouvelle.setCliUv(new UV(s.getSerUv().getNumero(),s.getSerUv().getNom()));
-//					System.err.println(s.getSerUv().getNumero());
-//					System.err.println(s.getSerUv().getNom());
+					nouvelle.setCliUv(new UV(s.getUv().getNumero(),s.getUv().getNom()));
+					//					System.err.println(s.getSerUv().getNumero());
+					//					System.err.println(s.getSerUv().getNom());
 					nouvelle.setDate(s.getDate());
 					sess.add(nouvelle);}
 			}
@@ -65,11 +70,11 @@ public class SessionManager {
 		//Liste des sessions accessibles en tant que formateur
 		else if (rol.equals("formateur")){
 			for(SerSession s:donnees.lSession){
-				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getSerUv())==true){
+				if(rechercheUVrequis(agent,s)==true && agent.getAptitude().contains(s.getUv())==true){
 					SessionT nouvelle=new SessionT();
 					nouvelle.setId(s.getId());
 					nouvelle.setLieu(s.getLieu());
-					nouvelle.setCliUv(new UV(s.getSerUv().getNumero(),s.getSerUv().getNom()));
+					nouvelle.setCliUv(new UV(s.getUv().getNumero(),s.getUv().getNom()));
 					nouvelle.setDate(s.getDate());
 					sess.add(nouvelle);
 				}
@@ -80,16 +85,15 @@ public class SessionManager {
 	}
 
 	/**
-	 * Fonction d'affichage de la liste des Sessions o� l'agent est inscrit
-	 * @param cle : Clé de hashage fourni à l'agent lors de la connexion
-	 * @param rol : Role de l'Agent : ApprenantCandidat ou FormateurCandidat ou ApprenantInscrit ou Formateur Inscrit
-	 * @return La liste des Sessions o� l'agent est inscrit suivant son role
+	 * Fonction d'affichage de la liste des Sessions ou l'agent est inscrit
+	 * @param cle Clé de hashage fourni à l'agent lors de la connexion
+	 * @param rol Role de l'Agent : ApprenantCandidat ou FormateurCandidat ou ApprenantInscrit ou Formateur Inscrit
+	 * @return La liste des Sessions ou l'agent est inscrit suivant son role
 	 */
-
 	@GET
 	@Path("/sessions")
 	public synchronized List<SessionT> SessionInscrit(@PathParam("cleHashage") String cle, @QueryParam("role") String rol){
-		
+
 		List<SessionT> lSessionCand=new ArrayList<SessionT>();
 		SerAgent agent=rechercheAgent(cle, donnees.lAgent);
 
@@ -98,9 +102,9 @@ public class SessionManager {
 				System.err.println("contient : "+s.getCandidatsAp().contains(agent));
 				if(s.getCandidatsAp().contains(agent)){
 					SessionT nouvelle=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
-					
+
 					lSessionCand.add(nouvelle);
-					
+
 				}
 			}
 			else if(rol.equals("FormateurCandidat")){
@@ -128,8 +132,8 @@ public class SessionManager {
 
 	/**
 	 * Recherche d'un Agent dans une liste d'Agent à partir d'une clef de hashage 
-	 * @param cle : Clé de Hashage fourni à l'Agent lors de sa connexion
-	 * @param listeAgent : Liste dans laquelle l'Agent est recherché
+	 * @param cle Clé de Hashage fourni à l'Agent lors de sa connexion
+	 * @param listeAgent Liste dans laquelle l'Agent est recherché
 	 * @return L'agent correspondant à la clé de hashage
 	 */
 	public SerAgent rechercheAgent(String cle, List<SerAgent> listeAgent){
@@ -153,13 +157,13 @@ public class SessionManager {
 
 	/**
 	 * Recherche si l'agent possède les UVs requis pour une session 
-	 * @param agent
-	 * @param session
+	 * @param agent Agent pour lequel on recherche les aptitudes
+	 * @param session Session pour laquelle on recherche les prerequis
 	 * @return Rend true si tous les UV requis pour une sessions sont validés par l'agent
 	 */
 	public boolean rechercheUVrequis(SerAgent agent, SerSession session){
 		boolean requisAcquis=true;
-		for(SerUV uvprerequis : session.getSerUv().getPrerequis()){
+		for(SerUV uvprerequis : session.getUv().getPrerequis()){
 			if(agent.getAptitude().contains(uvprerequis)==false){requisAcquis=false;}
 		}
 		return requisAcquis;
@@ -170,8 +174,8 @@ public class SessionManager {
 	 * En tant que directeur:
 	 * Ajout un nouvel agent parmi les  participants à la session en tant qu'apprenant ou formateur
 	 * 
-	 * @param cle
-	 * @param codeS
+	 * @param matri Matricule de l'Agent 
+	 * @param codeS Numero de la Session
 	 * @return Status sur la validation de la candidature
 	 */
 	@PUT
@@ -218,9 +222,9 @@ public class SessionManager {
 	 * En tant que Directeur:
 	 * Retourne la liste des candidats à une session en tant que : 
 	 * ApprenantCandidat, FormateurCandidat, ApprenantInscrit ou FormateurInscrit
-	 * @param codeS
-	 * @param rol
-	 * @return ListeCandidat
+	 * @param codeS Numero de la Session
+	 * @param rol Role de l'Agent
+	 * @return La liste des Candidats à la Session demandee
 	 */
 	@GET
 	@Path("/session/{codeSession}/candidats/")
@@ -277,8 +281,8 @@ public class SessionManager {
 
 	/**
 	 * FONCTION : Recherche d'un Session dans une liste de session à partir d'un CodeSession 
-	 * @param CodeSession : Id session fourni à la session lors de sa connexion
-	 * @param listeSession : Liste dans laquelle la session est recherché
+	 * @param CodeSession Id session fourni à la session lors de sa connexion
+	 * @param listeSession Liste dans laquelle la session est recherché
 	 * @return La session correspondant à un code de session
 	 */
 	public SerSession rechercheSession( int CodeSession, List<SerSession> listeSession ){
@@ -297,8 +301,8 @@ public class SessionManager {
 
 	/**
 	 * Suppression de la candidature d'un agent à une session
-	 * @param ImpCliSession
-	 * @param String : Clé de hashage
+	 * @param idSession Numero de la Session
+	 * @param cle Clé de hashage
 	 */
 	@DELETE
 	@Path("/delete")
@@ -326,30 +330,32 @@ public class SessionManager {
 
 
 	}
+	
 	/**
-	 * @param cle
-	 * @param rol
-	 * @return Liste des Stages pour lesquelles l'agent connect� est directeur
+	 * Fourni la liste des stage d pour l'Agent directeur
+	 * @param cle Cle de hachage de l'Agent
+	 * @param rol Role de l'Agent (verification qu'il est directeur)
+	 * @return Liste des Stages pour lesquelles l'agent connecte est directeur
 	 */
 	@GET
 	@Path("/directeur")
 	public List<Stage> ListeStageDirecteur(@PathParam("cleHashage") String cle, @QueryParam("role") String rol) {
 		List<Stage> listeStage=new ArrayList<Stage>();
 		if(rol.equals("directeur")){
-			
-		for(SerStage stage:donnees.lStage){
-			if(stage.getDirecteurSer().getCleHashage().equals(cle)){
-				System.err.println("directeur");
-				List<SessionT> listeSession=new ArrayList<SessionT>();
-				for(SerSession s:stage.getListeSerSessions()){
-					SessionT session=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
-					listeSession.add(session);
+
+			for(SerStage stage:donnees.lStage){
+				if(stage.getDirecteurSer().getCleHashage().equals(cle)){
+					System.err.println("directeur");
+					List<SessionT> listeSession=new ArrayList<SessionT>();
+					for(SerSession s:stage.getListeSerSessions()){
+						SessionT session=new SessionT(s.getId(),new UV(s.getUv().getNumero(),s.getUv().getNom()), s.getDate(), s.getLieu(), s.getNbMin(), s.getNbMax(), s.getNbFormateur());
+						listeSession.add(session);
+					}
+					Stage nouveau=new Stage(stage.getTitle(),listeSession,new AgentT(stage.getDirecteurSer().getMatricule(),stage.getDirecteurSer().getNom(),stage.getDirecteurSer().getPrenom()));
+					listeStage.add(nouveau);
 				}
-				Stage nouveau=new Stage(stage.getTitle(),listeSession,new AgentT(stage.getDirecteurSer().getMatricule(),stage.getDirecteurSer().getNom(),stage.getDirecteurSer().getPrenom()));
-			listeStage.add(nouveau);
 			}
-		}
-		return listeStage;
+			return listeStage;
 		}
 		else {return null;}
 	}
@@ -357,10 +363,10 @@ public class SessionManager {
 
 	/**
 	 * Inscription à une session par un agent
-	 * @param cle
-	 * @param rol
-	 * @param code
-	 * @param priorite
+	 * @param cle Cle de hachage de l'Agent 
+	 * @param rol Role de l'Agent
+	 * @param code Numero de la Session
+	 * @param priorite Priorite du candidat pour la session
 	 */
 	@POST
 	@Path("/submit")
